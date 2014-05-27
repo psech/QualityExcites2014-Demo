@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+<testsuite name="async bars" errors="0" tests="1" failures="0" time="9.578" timestamp="2014-05-26T12:40:50">
+  <testcase classname="async bars" name="should contain bar with id bar_6" time="9.577"></testcase>
+</testsuite>
+</testsuites>

@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="jumbotron starter-template">
+        <input type="text" class="form-control selfish" placeholder="Enter search text" ng-model="query">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>First name</th><th>Last name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="text-left" ng-repeat="user in users | filter:query">
+                <td>{{user.firstName}}</td><td>{{user.lastName}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div><!-- /.container -->

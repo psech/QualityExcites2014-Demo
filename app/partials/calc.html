@@ -1,0 +1,8 @@
+<div class="container">
+    <div class="jumbotron starter-template">
+        <div class="calc">
+            <input type="text" class="form-control selfish" ng-model="result">
+            <button type="button" id="{{button.id}}" class="btn btn-lg btn-primary selfish" ng-repeat="button in buttons" ng-click="calculate(button.caption)">{{button.caption}}</button>
+        </div>
+    </div>
+</div><!-- /.container -->

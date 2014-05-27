@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+<testsuite name="calc" errors="0" tests="7" failures="0" time="23.649" timestamp="2014-05-26T12:41:00">
+  <testcase classname="calc" name="should calculate multiplication (with &amp;quot;multiplication table&amp;quot; using 5, 5)" time="2.948"></testcase>
+  <testcase classname="calc" name="should calculate multiplication (with &amp;quot;multiplication table&amp;quot; using 5, 6)" time="3.321"></testcase>
+  <testcase classname="calc" name="should calculate multiplication (with &amp;quot;multiplication table&amp;quot; using 5, 7)" time="3.494"></testcase>
+  <testcase classname="calc" name="should calculate multiplication (with &amp;quot;multiplication table&amp;quot; using 6, 5)" time="3.166"></testcase>
+  <testcase classname="calc" name="should calculate multiplication (with &amp;quot;multiplication table&amp;quot; using 6, 6)" time="3.243"></testcase>
+  <testcase classname="calc" name="should calculate multiplication (with &amp;quot;multiplication table&amp;quot; using 6, 7)" time="3.072"></testcase>
+  <testcase classname="calc" name="should calculate equation" time="4.398"></testcase>
+</testsuite>
+</testsuites>
