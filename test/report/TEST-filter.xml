@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<testsuites>
-<testsuite name="filter" errors="0" tests="2" failures="0" time="7.464" timestamp="2014-05-26T12:40:43">
-  <testcase classname="filter" name="should present proper number of elements" time="3.266"></testcase>
-  <testcase classname="filter" name="should present proper elements" time="4.194"></testcase>
-</testsuite>
-</testsuites>
