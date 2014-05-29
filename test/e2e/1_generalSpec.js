@@ -10,7 +10,7 @@ describe('my app', function () {
         });
     });
 
-    it('should automatically redirect to /home when location hash/gragment in incorrect', function () {
+    it('should automatically redirect to /home when location hash/fragment is incorrect', function () {
         browser.get('#/fragment').then(function () {
             expect(browser.getLocationAbsUrl()).toMatch("/home");
         });

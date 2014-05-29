@@ -1,4 +1,4 @@
-# QualityExcites 2014 Demo Application
+# Quality Excites 2014 Demo Application
 
 This project is based on [Angular-Seed](https://github.com/angular/angular-seed) application.
 
