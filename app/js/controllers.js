@@ -61,10 +61,3 @@ angular.module('myApp.controllers', [])
             }
         };
     });
-
-
-describe("A suite", function () {
-    it("contains spec with an expectation", function () {
-        expect(true).ToBe(true);
-    });
-});
