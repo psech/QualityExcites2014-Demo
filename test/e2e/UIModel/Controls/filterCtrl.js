@@ -14,5 +14,5 @@ module.exports = {
         return uiModel.filterView.getElementsByRepeater().map(function (elem) {
             return elem.getText();
         });
-    },
+    }
 };

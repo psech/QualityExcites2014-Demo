@@ -35,12 +35,12 @@ describe('filter', function () {
         }).then(function () {
             expect(uiModel.filterCtrl.getUserArray()).toEqual([
                 'Camila Gilson',
-                'Claire Campbell',
+                'Claire Campbell'
             ]);
             return uiModel.filterCtrl.filter('mi');
         }).then(function () {
             expect(uiModel.filterCtrl.getUserArray()).toEqual([
-                'Camila Gilson',
+                'Camila Gilson'
             ]);
             return uiModel.filterCtrl.filter('s');
         }).then(function () {
