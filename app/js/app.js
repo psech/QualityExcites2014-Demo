@@ -17,6 +17,9 @@ angular.module('myApp', [
         }).when('/calc', {
             templateUrl: 'partials/calc.html',
             controller: 'calcCtrl'
+        }).when('/form', {
+            templateUrl: 'partials/form.html',
+            controller: 'formCtrl'
         }).otherwise({
             redirectTo: '/home'
         });

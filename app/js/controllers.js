@@ -60,4 +60,22 @@ angular.module('myApp.controllers', [])
                     break;
             }
         };
+    }).controller('formCtrl', function ($scope, $http) {
+        // http://stackoverflow.com/questions/15688313/how-can-i-populate-a-select-dropdown-list-from-a-json-feed-with-angularjs
+        $scope.selectedTestAccount = null;
+        $scope.testAccounts = [];
+
+        $scope.testAccounts = [
+            {"id": 0, "name": "testAccount_0"},
+            {"id": 1, "name": "testAccount_1"},
+            {"id": 2, "name": "testAccount_2"}
+        ];
+
+//        $http({
+//            method: 'GET',
+//            url: '',
+//            data: {applicationId: 3}
+//        }).success(function (result) {
+//            $scope.testAccounts = result;
+//        });
     });

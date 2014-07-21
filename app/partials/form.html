@@ -1,0 +1,9 @@
+<div class="container">
+    <div class="jumbotron starter-template">
+        <select ng-model="selectedTestAccount" ng-options="testAccount.name for testAccount in testAccounts">
+            <option value="">Select account</option>
+        </select>
+
+        <span>Selected Test Account: {{selectedTestAccount.name}}</span>
+    </div>
+</div><!-- /.container -->
