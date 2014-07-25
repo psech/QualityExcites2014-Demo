@@ -3,10 +3,26 @@ input.selfish {
     font-size: x-large;
 }
 
-tr {
+input.dropDownValue {
+    font-size: x-large;
+    height: 96px;
+}
+
+select.selfish {
+    height: 60px;
     font-size: x-large;
 }
 
+a, tr, ul, span {
+    font-size: x-large !important;
+}
+
 .alert {
+    font-size: x-large;
+}
+
+button.dropdown-toggle {
+    padding: 30px;
+    width: 160px;
     font-size: x-large;
 }

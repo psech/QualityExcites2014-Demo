@@ -1,0 +1,16 @@
+{
+    "sellItems": [
+        {"description": "Item 1", "price": 75},
+        {"description": "Item 2", "price": 25}
+    ],
+    "deliveryMethods": [
+        {"id": 0, "name": "Personal collection"},
+        {"id": 1, "name": "Courier"},
+        {"id": 2, "name": "Post"}
+    ],
+    "billingMethods": [
+        {"id": 0, "name": "Cash"},
+        {"id": 1, "name": "Credit card"},
+        {"id": 2, "name": "Bank transfer"}
+    ]
+}

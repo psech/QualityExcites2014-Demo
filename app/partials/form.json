@@ -1,7 +1,0 @@
-{
-    "testAccounts": [
-        {"id": 0, "name": "ta0"},
-        {"id": 1, "name": "ta1"},
-        {"id": 2, "name": "ta2"}
-    ]
-}

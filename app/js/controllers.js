@@ -62,20 +62,97 @@ angular.module('myApp.controllers', [])
         };
     }).controller('formCtrl', function ($scope, $http) {
         // http://stackoverflow.com/questions/15688313/how-can-i-populate-a-select-dropdown-list-from-a-json-feed-with-angularjs
-        $scope.selectedTestAccount = null;
-        $scope.testAccounts = [];
+        var timeout = 0;
 
-        $scope.testAccounts = [
-            {"id": 0, "name": "testAccount_0"},
-            {"id": 1, "name": "testAccount_1"},
-            {"id": 2, "name": "testAccount_2"}
-        ];
+        $scope.sellItems = [];
+        $scope.deliveryMethods = [];
+        $scope.billingMethods = [];
 
-//        $http({
-//            method: 'GET',
-//            url: '',
-//            data: {applicationId: 3}
-//        }).success(function (result) {
-//            $scope.testAccounts = result;
-//        });
+        $scope.deliveryMethod = "";
+        $scope.billingMethod = "";
+
+        $scope.deliveryDetails = {};
+        $scope.billingDetails = {};
+
+        $scope.deliveryPrice = 0;
+        $scope.totalPrice = 0;
+
+        $scope.showDelivery = [false, false, false];
+        $scope.showBilling = [false, false, false];
+
+        function updatePrices () {
+            var deliveryPrice = $scope.deliveryDetails.deliveryPrice || 0,
+                billingPrice = $scope.billingDetails.deliveryPrice || 0;
+
+            $scope.deliveryPrice = deliveryPrice + billingPrice;
+            $scope.totalPrice = getTotalPrice($scope.sellItems) + $scope.deliveryPrice;
+        }
+
+        function getTotalPrice (sellItems) {
+            var totalPrice = 0;
+            sellItems.forEach(function (sellItem) {
+                totalPrice += sellItem.price;
+            });
+            return totalPrice;
+        }
+
+        function getDeliveryDetails(type, elem) {
+            $http.get('/app/data/' + type + '.json')
+                .success(function (response) {
+                    var item = elem.name.replace(/\s+/g, '_');
+                    $scope.deliveryDetails = response[item];
+                    updatePrices();
+                })
+                .error(function (err) {
+                    console.log('>> ERROR', err);
+                });
+        }
+
+        function getBillingDetails(type, elem) {
+            $http.get('/app/data/' + type + '.json')
+                .success(function (response) {
+                    if (type && elem) {
+                        var item = elem.name.replace(/\s+/g, '_');
+                        if (elem.name === 'Cash') {
+                            $scope.billingDetails = response[item][$scope.deliveryMethod.replace(/\s+/g, '_')];
+                        } else {
+                            $scope.billingDetails = response[item];
+                        }
+                        updatePrices();
+                    }
+
+                })
+                .error(function (err) {
+                    console.log('>> ERROR', err);
+                });
+        }
+
+        $scope.selectChange = function (type, elem) {
+            switch (type) {
+                case 'delivery':
+                    $scope.deliveryMethod = elem.name;
+                    $scope.showDelivery = [false, false, false];
+                    $scope.showDelivery[elem.id] = true;
+                    setTimeout(getDeliveryDetails, timeout, type, elem);
+                    break;
+                case 'billing':
+                    $scope.billingMethod = elem.name;
+                    $scope.showBilling = [false, false, false];
+                    $scope.showBilling[elem.id] = true;
+                    setTimeout(getBillingDetails, timeout, type, elem);
+                    break;
+            }
+        };
+
+        setTimeout(function () {
+            $http.get('/app/data/form.json').success(function (response) {
+                $scope.testAccounts = response.testAccounts;
+                $scope.sellItems = response.sellItems;
+                $scope.deliveryMethods = response.deliveryMethods;
+                $scope.billingMethods = response.billingMethods;
+                $scope.totalPrice = getTotalPrice($scope.sellItems);
+            }).error(function (err) {
+                console.log('>> ERROR', err);
+            });
+        }, timeout);
     });
