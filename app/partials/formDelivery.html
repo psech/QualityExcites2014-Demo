@@ -1,0 +1,9 @@
+<p id="personalMessage" ng-repeat="msg in deliveryDetails.message track by $id(msg)">{{msg}}
+    <span ng-if="deliveryDetails.deliveryPrice > 0"> ${{deliveryDetails.deliveryPrice}}</span>
+</p>
+<div class="input-group courier" ng-repeat="deliveryIco in deliveryDetails.chooseIco">
+    <span class="input-group-addon">
+        <input type="radio" name="courier">
+    </span>
+    <img ng-src="img/delivery_{{deliveryIco}}.gif" alt="{{deliveryIco}}" class="img-rounded">
+</div>

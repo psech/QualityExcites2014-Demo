@@ -13,7 +13,7 @@ select.selfish {
     font-size: x-large;
 }
 
-a, tr, ul, span {
+p, a, tr, ul, span {
     font-size: x-large !important;
 }
 

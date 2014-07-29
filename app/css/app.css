@@ -21,6 +21,14 @@ div.callout {
     border-radius: 3px;
 }
 
+div.courier {
+    padding: 20px;
+}
+
+p {
+    font-size: 14px !important;
+}
+
 input.selfish {
     margin-bottom: 30px;
     background-color: white !important;

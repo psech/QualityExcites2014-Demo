@@ -1,0 +1,45 @@
+{
+    "Personal_collection": {
+        "message": ["No influence on delivery price", "Address:", "Struzika 6B m.20", "41-806 Zabrze"],
+        "chooseIco": [],
+        "deliveryPrice": 0
+    },
+    "Courier": {
+        "message": ["The delivery price will be extended of"],
+        "chooseIco": ["DHL", "FedEx", "UPS"],
+        "deliveryPrice": 20
+    },
+    "Post": {
+        "message": ["The delivery price will be extended of"],
+        "chooseIco": ["Post"],
+        "deliveryPrice": 30
+    },
+    "Cash": {
+        "CashPersonal_collection": {
+            "message": ["No influence on delivery price"],
+            "chooseIco": [],
+            "deliveryPrice": 0
+        },
+        "CashCourier": {
+            "message": ["The delivery price will be extended of"],
+            "chooseIco": [],
+            "deliveryPrice": 42
+        },
+        "CashPost": {
+            "message": ["The delivery price will be extended of"],
+            "chooseIco": [],
+            "deliveryPrice": 43
+        }
+    },
+    "Credit_card": {
+        "message": ["The delivery price will be extended of"],
+        "chooseIco": ["MasterCard", "Visa", "AmericanExpress"],
+        "deliveryPrice": 50
+    },
+    "Bank_transfer": {
+        "message": ["The delivery price will be extended of"],
+        "chooseIco": ["BankTransfer"],
+        "deliveryPrice": 60
+    }
+
+}

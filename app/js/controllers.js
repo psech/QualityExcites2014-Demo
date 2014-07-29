@@ -61,6 +61,12 @@ angular.module('myApp.controllers', [])
             }
         };
     }).controller('formCtrl', function ($scope, $http) {
+
+        $scope.templates =[
+            { name: 'formBilling.html', url: 'partials/formBilling.html'},
+            { name: 'formDelivery.html', url: 'partials/formDelivery.html'}
+        ];
+
         // http://stackoverflow.com/questions/15688313/how-can-i-populate-a-select-dropdown-list-from-a-json-feed-with-angularjs
         var timeout = 0;
 
@@ -70,6 +76,8 @@ angular.module('myApp.controllers', [])
 
         $scope.deliveryMethod = "";
         $scope.billingMethod = "";
+        $scope.deliveryTemplate = 'partials/formDelivery.html';
+        $scope.billingTemplate = 'partials/formBilling.html';
 
         $scope.deliveryDetails = {};
         $scope.billingDetails = {};
@@ -77,8 +85,8 @@ angular.module('myApp.controllers', [])
         $scope.deliveryPrice = 0;
         $scope.totalPrice = 0;
 
-        $scope.showDelivery = [false, false, false];
-        $scope.showBilling = [false, false, false];
+        $scope.deliveryShow = [false, false, false];
+        $scope.billingShow = [false, false, false];
 
         function updatePrices () {
             var deliveryPrice = $scope.deliveryDetails.deliveryPrice || 0,
@@ -96,11 +104,19 @@ angular.module('myApp.controllers', [])
             return totalPrice;
         }
 
-        function getDeliveryDetails(type, elem) {
-            $http.get('/app/data/' + type + '.json')
+        function getDetails(elem) {
+            $http.get('/app/data/selects.json')
                 .success(function (response) {
                     var item = elem.name.replace(/\s+/g, '_');
-                    $scope.deliveryDetails = response[item];
+
+                    // Update deliveryDetails
+                    $scope[elem.type + 'Details'] = response[item];
+
+                    // Update billingDetails
+                    if ($scope.billingMethod === 'Cash') {
+                        $scope.billingDetails = response.Cash['Cash' + $scope.deliveryMethod.replace(/\s+/g, '_')];
+                    }
+
                     updatePrices();
                 })
                 .error(function (err) {
@@ -108,45 +124,16 @@ angular.module('myApp.controllers', [])
                 });
         }
 
-        function getBillingDetails(type, elem) {
-            $http.get('/app/data/' + type + '.json')
-                .success(function (response) {
-                    if (type && elem) {
-                        var item = elem.name.replace(/\s+/g, '_');
-                        if (elem.name === 'Cash') {
-                            $scope.billingDetails = response[item][$scope.deliveryMethod.replace(/\s+/g, '_')];
-                        } else {
-                            $scope.billingDetails = response[item];
-                        }
-                        updatePrices();
-                    }
+        $scope.selectChange = function (elem) {
+            $scope[elem.type + 'Method'] = elem.name;
+            setTimeout(getDetails, timeout, elem);
 
-                })
-                .error(function (err) {
-                    console.log('>> ERROR', err);
-                });
-        }
-
-        $scope.selectChange = function (type, elem) {
-            switch (type) {
-                case 'delivery':
-                    $scope.deliveryMethod = elem.name;
-                    $scope.showDelivery = [false, false, false];
-                    $scope.showDelivery[elem.id] = true;
-                    setTimeout(getDeliveryDetails, timeout, type, elem);
-                    break;
-                case 'billing':
-                    $scope.billingMethod = elem.name;
-                    $scope.showBilling = [false, false, false];
-                    $scope.showBilling[elem.id] = true;
-                    setTimeout(getBillingDetails, timeout, type, elem);
-                    break;
-            }
+            $scope[elem.type + 'Show'] = [false, false, false];
+            $scope[elem.type + 'Show'][elem.id] = true;
         };
 
         setTimeout(function () {
             $http.get('/app/data/form.json').success(function (response) {
-                $scope.testAccounts = response.testAccounts;
                 $scope.sellItems = response.sellItems;
                 $scope.deliveryMethods = response.deliveryMethods;
                 $scope.billingMethods = response.billingMethods;

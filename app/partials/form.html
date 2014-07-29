@@ -20,51 +20,40 @@
                 <option value="">Select account</option>
             </select>-->
 
+            <!-- DELIVERY -->
             <div class="input-group">
                 <div class="input-group-btn">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Delivery <span class="caret"></span></button>
                     <ul class="dropdown-menu" role="menu">
-                        <li ng-click="selectChange('delivery', deliveryMethod)" ng-repeat="deliveryMethod in deliveryMethods" id="{{deliveryMethod.id}}"><a href="">{{deliveryMethod.name}}</a></li>
+                        <li ng-click="selectChange(deliveryMethod)" ng-repeat="deliveryMethod in deliveryMethods" id="aa"><a href="">{{deliveryMethod.name}}</a></li>
                     </ul>
                 </div>
                 <input type="text" class="form-control dropDownValue" value="{{deliveryMethod}}" disabled>
             </div>
             <div class="left indent">
-                <div id="personalCollection" class="callout" ng-if="showDelivery[0]">
-                    <p>Personal collection</p>
-                </div>
-                <div id="courier" class="callout" ng-if="showDelivery[1]">
-                    <p>Courier</p>
-                </div>
-                <div id="post" class="callout" ng-if="showDelivery[2]">
-                    <p>Post</p>
-                </div>
+                <div id="personal" class="callout" ng-if="deliveryShow[0] || deliveryShow[1] || deliveryShow[2]" ng-include="deliveryTemplate"></div>
             </div>
-            <div class="input-group" ng-if="showDelivery[0] || showDelivery[1] || showDelivery[2]">
+            <!-- BILLING -->
+            <div class="input-group" ng-if="deliveryShow[0] || deliveryShow[1] || deliveryShow[2]">
                 <div class="input-group-btn">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Billing <span class="caret"></span></button>
                     <ul class="dropdown-menu" role="menu">
-                        <li ng-click="selectChange('billing', billingMethod)" ng-repeat="billingMethod in billingMethods" id="{{billingMethod.id}}"><a href="">{{billingMethod.name}}</a></li>
+                        <li ng-click="selectChange(billingMethod)" ng-repeat="billingMethod in billingMethods"><a href="">{{billingMethod.name}}</a></li>
                     </ul>
                 </div>
                 <input type="text" class="form-control dropDownValue" value="{{billingMethod}}" disabled>
             </div>
             <div class="left indent">
-                <div id="cashPersonalCollection" class="callout" ng-if="showBilling[0] && showDelivery[0]">
-                    <p>Cash + personal collection</p>
-                </div>
-                <div id="cashCourier" class="callout" ng-if="showBilling[0] && showDelivery[1]">
-                    <p>Cash + courier</p>
-                </div>
-                <div id="cashPost" class="callout" ng-if="showBilling[0] && showDelivery[2]">
-                    <p>Cash + post</p>
-                </div>
-                <div id="creditCard" class="callout" ng-if="showBilling[1]">
-                    <p>Credit card</p>
-                </div>
-                <div id="bankTransfer" class="callout" ng-if="showBilling[2]">
-                    <p>Bank transfer</p>
-                </div>
+                <!-- CASH + PERSONAL COLLECTION -->
+                <div id="cashPersonal_collection" class="callout" ng-if="billingShow[0] && deliveryShow[0]" ng-include="billingTemplate"></div>
+                <!-- CASH + COURIER -->
+                <div id="cashCourier" class="callout" ng-if="billingShow[0] && deliveryShow[1]" ng-include="billingTemplate"></div>
+                <!-- CASH + POST -->
+                <div id="cashPost" class="callout" ng-if="billingShow[0] && deliveryShow[2]" ng-include="billingTemplate"></div>
+                <!-- CREDIT CARD -->
+                <div id="creditCard" class="callout" ng-if="billingShow[1]" ng-include="billingTemplate"></div>
+                <!-- BANK TRANSFER -->
+                <div id="bankTransfer" class="callout" ng-if="billingShow[2]" ng-include="billingTemplate"></div>
             </div>
 
         </ng-form>
