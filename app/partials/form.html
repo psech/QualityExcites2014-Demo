@@ -1,19 +1,17 @@
 <div class="container">
     <div class="jumbotron starter-template">
-        <div id="pricetable">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>Description</th><th>Price</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat="sellItem in sellItems"><td>{{sellItem.description}}</td><td>${{sellItem.price.toFixed(2)}}</td></tr>
-                <tr><td class="right"><span class="label label-default">Delivery</span></td><td>${{deliveryPrice.toFixed(2)}}</td></tr>
-                <tr><td class="right"><span class="label label-default">Total</span></td><td>${{totalPrice.toFixed(2)}}</td></tr>
-                </tbody>
-            </table>
-        </div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Description</th><th>Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="sellItem in sellItems"><td>{{sellItem.description}}</td><td>${{sellItem.price.toFixed(2)}}</td></tr>
+            <tr><td class="right"><span class="label label-default">Delivery</span></td><td>${{deliveryPrice.toFixed(2)}}</td></tr>
+            <tr><td class="right"><span class="label label-default">Total</span></td><td>${{totalPrice.toFixed(2)}}</td></tr>
+            </tbody>
+        </table>
 
         <ng-form name="QEForm" role="form">
             <!--<select class="form-control selfish" ng-model="selectedTestAccount" ng-change="selectChange(null)" ng-options="testAccount.name for testAccount in testAccounts">
