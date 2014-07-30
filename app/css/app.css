@@ -22,6 +22,7 @@ div.callout {
 }
 
 div.courier {
+    float: left !important;
     padding: 20px;
 }
 

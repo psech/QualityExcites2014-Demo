@@ -29,7 +29,7 @@
                 <input type="text" class="form-control dropDownValue" value="{{deliveryMethod}}" disabled>
             </div>
             <div class="left indent">
-                <div id="personal" class="callout" ng-if="deliveryShow[0] || deliveryShow[1] || deliveryShow[2]" ng-include="deliveryTemplate"></div>
+                <div id="personal" class="callout row" ng-if="deliveryShow[0] || deliveryShow[1] || deliveryShow[2]" ng-include="deliveryTemplate"></div>
             </div>
             <!-- BILLING -->
             <div class="input-group" ng-if="deliveryShow[0] || deliveryShow[1] || deliveryShow[2]">
@@ -43,15 +43,15 @@
             </div>
             <div class="left indent">
                 <!-- CASH + PERSONAL COLLECTION -->
-                <div id="cashPersonal_collection" class="callout" ng-if="billingShow[0] && deliveryShow[0]" ng-include="billingTemplate"></div>
+                <div id="cashPersonal_collection" class="callout row" ng-if="billingShow[0] && deliveryShow[0]" ng-include="billingTemplate"></div>
                 <!-- CASH + COURIER -->
-                <div id="cashCourier" class="callout" ng-if="billingShow[0] && deliveryShow[1]" ng-include="billingTemplate"></div>
+                <div id="cashCourier" class="callout row" ng-if="billingShow[0] && deliveryShow[1]" ng-include="billingTemplate"></div>
                 <!-- CASH + POST -->
-                <div id="cashPost" class="callout" ng-if="billingShow[0] && deliveryShow[2]" ng-include="billingTemplate"></div>
+                <div id="cashPost" class="callout row" ng-if="billingShow[0] && deliveryShow[2]" ng-include="billingTemplate"></div>
                 <!-- CREDIT CARD -->
-                <div id="creditCard" class="callout" ng-if="billingShow[1]" ng-include="billingTemplate"></div>
+                <div id="creditCard" class="callout row" ng-if="billingShow[1]" ng-include="billingTemplate"></div>
                 <!-- BANK TRANSFER -->
-                <div id="bankTransfer" class="callout" ng-if="billingShow[2]" ng-include="billingTemplate"></div>
+                <div id="bankTransfer" class="callout row" ng-if="billingShow[2]" ng-include="billingTemplate"></div>
             </div>
 
         </ng-form>
