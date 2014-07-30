@@ -20,6 +20,8 @@ angular.module('myApp', [
         }).when('/form', {
             templateUrl: 'partials/form.html',
             controller: 'formCtrl'
+        }).when('/test', {
+            templateUrl: 'partials/test.html'
         }).otherwise({
             redirectTo: '/home'
         });
