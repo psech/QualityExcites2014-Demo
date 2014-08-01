@@ -3,7 +3,7 @@
 </p>
 <div class="input-group courier col-md-3" ng-repeat="deliveryIco in deliveryDetails.chooseIco">
     <span class="input-group-addon">
-        <input type="radio" name="courier">
+        <input type="radio" name="deliveryRadios" ng-click="selectDeliveryRadio(deliveryIco)">
     </span>
     <img ng-src="img/delivery_{{deliveryIco}}.gif" alt="{{deliveryIco}}" class="img-rounded">
 </div>

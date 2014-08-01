@@ -62,11 +62,6 @@ angular.module('myApp.controllers', [])
         };
     }).controller('formCtrl', function ($scope, $http) {
 
-        $scope.templates =[
-            { name: 'formBilling.html', url: 'partials/formBilling.html'},
-            { name: 'formDelivery.html', url: 'partials/formDelivery.html'}
-        ];
-
         // http://stackoverflow.com/questions/15688313/how-can-i-populate-a-select-dropdown-list-from-a-json-feed-with-angularjs
         var timeout = 0;
 
@@ -126,10 +121,24 @@ angular.module('myApp.controllers', [])
 
         $scope.selectChange = function (elem) {
             $scope[elem.type + 'Method'] = elem.name;
+
             setTimeout(getDetails, timeout, elem);
 
             $scope[elem.type + 'Show'] = [false, false, false];
             $scope[elem.type + 'Show'][elem.id] = true;
+        };
+
+        $scope.selectDeliveryRadio = function (elem) {
+            $scope.deliveryDetails.choosenIco = elem;
+        };
+
+        $scope.selectBillingRadio = function (elem) {
+            $scope.billingDetails.choosenIco = elem;
+        };
+
+        $scope.submit = function () {
+            console.log('>> deliveryDetails', $scope.deliveryDetails);
+            console.log('>> billingDetails', $scope.billingDetails);
         };
 
         setTimeout(function () {
