@@ -1,41 +1,28 @@
 <div class="container">
     <div class="jumbotron starter-template">
-        <div id="cashCourier" class="callout row">
+        <div ng-controller="ModalDemoCtrl">
+            <script type="text/ng-template" id="myModalContent.html">
+                <div class="modal-header">
+                    <h3 class="modal-title">I'm a modal!</h3>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li ng-repeat="item in items">
+                            <a ng-click="selected.item = item">{{ item }}</a>
+                        </li>
+                    </ul>
+                    Selected: <b>{{ selected.item }}</b>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" ng-click="ok()">OK</button>
+                    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                </div>
+            </script>
 
-            <div class="input-group courier col-md-3">
-                <table>
-                    <tr><td>
-                        <img ng-src="img/delivery_DHL.gif" alt="DHL" class="img-rounded">
-                    </td></tr>
-                    <tr><td>
-                        <span>
-                            <input type="radio" name="post">
-                        </span>
-                    </td></tr>
-                </table>
-
-            </div>
-
-            <div class="input-group courier col-md-3" style="border: solid">
-                <span class="input-group-addon">
-                    <input type="radio" name="post">
-                </span>
-                <img ng-src="img/delivery_DHL.gif" alt="DHL" class="img-rounded">
-            </div>
-
-            <div class="input-group courier col-md-3" style="border: solid">
-                <span class="input-group-addon">
-                    <input type="radio" name="post">
-                </span>
-                <img ng-src="img/delivery_DHL.gif" alt="DHL" class="img-rounded">
-            </div>
-
+            <button class="btn btn-default" ng-click="open()">Open me!</button>
+            <button class="btn btn-default" ng-click="open('lg')">Large modal</button>
+            <button class="btn btn-default" ng-click="open('sm')">Small modal</button>
+            <div ng-show="selected">Selection from a modal: {{ selected }}</div>
         </div>
     </div>
-</div>
-
-<div class="row">
-    <div class="col-md-2">.col-md-2</div>
-    <div class="col-md-2">.col-md-2</div>
-    <div class="col-md-2">.col-md-2</div>
 </div>

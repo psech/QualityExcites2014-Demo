@@ -1,5 +1,25 @@
 <div class="container">
     <div class="jumbotron starter-template">
+
+        <!--<div ng-controller="ModalDemoCtrl">-->
+            <script type="text/ng-template" id="myModalContent.html">
+                <div class="modal-header">
+                    <h3 class="modal-title">Billing summary</h3>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <tr><td>Delivery method</td><td>{{deliveryMethod}}<span ng-if="deliveryChoosen"> <i>with</i> {{deliveryChoosen}}</span></td></tr>
+                        <tr><td>Billing method</td><td>{{billingMethod}}<span ng-if="billingChoosen"> <i>with</i> {{billingChoosen}}</span></td></tr>
+                        <tr><td>Total price</td><td>${{totalPrice.toFixed(2)}}</td></tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" ng-click="ok()">OK</button>
+                    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                </div>
+            </script>
+        <!--</div>-->
+
         <table class="table">
             <thead>
             <tr>
@@ -13,11 +33,6 @@
             </tbody>
         </table>
 
-        <table class="table">
-            <tr><td>deliveryDetails.choosenIco</td><td>{{deliveryDetails.choosenIco}}</td></tr>
-            <tr><td>billingDetails.choosenIco</td><td>{{billingDetails.choosenIco}}</td></tr>
-        </table>
-
         <form ng-submit="submit()" name="QEForm" role="form">
             <!--<select class="form-control selfish" ng-model="selectedTestAccount" ng-change="selectChange(null)" ng-options="testAccount.name for testAccount in testAccounts">
                 <option value="">Select account</option>
@@ -28,7 +43,7 @@
                 <div class="input-group-btn">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Delivery <span class="caret"></span></button>
                     <ul class="dropdown-menu" role="menu">
-                        <li ng-click="selectChange(deliveryMethod)" ng-repeat="deliveryMethod in deliveryMethods" id="aa"><a href="">{{deliveryMethod.name}}</a></li>
+                        <li ng-click="selectChange(deliveryMethod)" ng-repeat="deliveryMethod in deliveryMethods"><a href="">{{deliveryMethod.name}}</a></li>
                     </ul>
                 </div>
                 <input type="text" class="form-control dropDownValue" value="{{deliveryMethod}}" disabled>

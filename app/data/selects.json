@@ -11,7 +11,7 @@
     },
     "Post": {
         "message": ["The delivery price will be extended of"],
-        "chooseIco": ["Post"],
+        "chooseIco": ["PocztaPolska"],
         "deliveryPrice": 30
     },
     "Cash": {
@@ -38,7 +38,7 @@
     },
     "Bank_transfer": {
         "message": ["The delivery price will be extended of"],
-        "chooseIco": ["BankTransfer"],
+        "chooseIco": ["StandardTransfer"],
         "deliveryPrice": 60
     }
 

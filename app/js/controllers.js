@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', [])
+angular.module('myApp.controllers', ['ui.bootstrap'])
     .controller('filterCtrl', function ($scope) {
         $scope.users = [
             { firstName: "Camila", lastName: "Gilson" },
@@ -60,7 +60,7 @@ angular.module('myApp.controllers', [])
                     break;
             }
         };
-    }).controller('formCtrl', function ($scope, $http) {
+    }).controller('formCtrl', function ($scope, $http, $modal, $log) {
 
         // http://stackoverflow.com/questions/15688313/how-can-i-populate-a-select-dropdown-list-from-a-json-feed-with-angularjs
         var timeout = 0;
@@ -136,9 +136,29 @@ angular.module('myApp.controllers', [])
             $scope.billingDetails.choosenIco = elem;
         };
 
-        $scope.submit = function () {
-            console.log('>> deliveryDetails', $scope.deliveryDetails);
-            console.log('>> billingDetails', $scope.billingDetails);
+        $scope.submit = function (size) {
+
+            $modal.open({
+                templateUrl: 'myModalContent.html',
+                controller: function ($scope, $modalInstance, $route/*, items*/) {
+
+                    $scope.deliveryMethod = $scope.$parent.$$childHead.deliveryMethod;
+                    $scope.deliveryChoosen = $scope.$parent.$$childHead.deliveryDetails.choosenIco;
+                    $scope.billingMethod = $scope.$parent.$$childHead.billingMethod;
+                    $scope.billingChoosen = $scope.$parent.$$childHead.billingDetails.choosenIco;
+                    $scope.totalPrice = $scope.$parent.$$childHead.totalPrice;
+
+                    $scope.ok = function () {
+                        $modalInstance.close();
+                        $route.reload();
+                    };
+
+                    $scope.cancel = function () {
+                        $modalInstance.dismiss('cancel');
+                    };
+                },
+                size: size
+            });
         };
 
         setTimeout(function () {
