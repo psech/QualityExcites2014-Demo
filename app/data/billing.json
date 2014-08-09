@@ -1,19 +1,4 @@
 {
-    "Personal_collection": {
-        "message": ["No influence on delivery price", "Address:", "Struzika 6B m.20", "41-806 Zabrze"],
-        "chooseIco": [],
-        "deliveryPrice": 0
-    },
-    "Courier": {
-        "message": ["The delivery price will be extended of"],
-        "chooseIco": ["DHL", "FedEx", "UPS"],
-        "deliveryPrice": 20
-    },
-    "Post": {
-        "message": ["The delivery price will be extended of"],
-        "chooseIco": ["PocztaPolska"],
-        "deliveryPrice": 30
-    },
     "Cash": {
         "CashPersonal_collection": {
             "message": ["No influence on delivery price"],
@@ -41,5 +26,4 @@
         "chooseIco": ["StandardTransfer"],
         "deliveryPrice": 60
     }
-
 }

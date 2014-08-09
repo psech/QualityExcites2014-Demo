@@ -81,6 +81,6 @@
     "white"         : true,     // true: Check against strict whitespace and indentation rules
 
     // Custom Globals
-    "predef"        : [ "jasmine", "angular", "browser", "describe", "beforeEach", "afterEach", "it",
+    "predef"        : [ "protractor", "jasmine", "angular", "browser", "describe", "beforeEach", "afterEach", "it",
         "element", "by", "expect", "uiModel" ]       // additional predefined global variables
 }

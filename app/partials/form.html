@@ -20,7 +20,7 @@
             </script>
         <!--</div>-->
 
-        <table class="table">
+        <table class="table" id="shoppingList">
             <thead>
             <tr>
                 <th>Description</th><th>Price</th>
@@ -39,7 +39,7 @@
             </select>-->
 
             <!-- DELIVERY -->
-            <div class="input-group">
+            <div class="input-group" id="delivery">
                 <div class="input-group-btn">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Delivery <span class="caret"></span></button>
                     <ul class="dropdown-menu" role="menu">
@@ -48,11 +48,11 @@
                 </div>
                 <input type="text" class="form-control dropDownValue" value="{{deliveryMethod}}" disabled>
             </div>
-            <div class="left indent">
-                <div id="personal" class="callout row" ng-if="deliveryShow[0] || deliveryShow[1] || deliveryShow[2]" ng-include="deliveryTemplate"></div>
+            <div class="left indent" id="deliveryOptions">
+                <div class="callout row" ng-if="deliveryShow[0] || deliveryShow[1] || deliveryShow[2]" ng-include="deliveryTemplate"></div>
             </div>
             <!-- BILLING -->
-            <div class="input-group" ng-if="deliveryShow[0] || deliveryShow[1] || deliveryShow[2]">
+            <div class="input-group" ng-if="deliveryShow[0] || deliveryShow[1] || deliveryShow[2]" id="billing">
                 <div class="input-group-btn">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Billing <span class="caret"></span></button>
                     <ul class="dropdown-menu" role="menu">
@@ -61,7 +61,7 @@
                 </div>
                 <input type="text" class="form-control dropDownValue" value="{{billingMethod}}" disabled>
             </div>
-            <div class="left indent">
+            <div class="left indent" id="billingOptions">
                 <!-- CASH + PERSONAL COLLECTION -->
                 <div id="cashPersonal_collection" class="callout row" ng-if="billingShow[0] && deliveryShow[0]" ng-include="billingTemplate"></div>
                 <!-- CASH + COURIER -->

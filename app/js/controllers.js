@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /* Controllers */
 
@@ -53,17 +53,18 @@ angular.module('myApp.controllers', ['ui.bootstrap'])
         $scope.calculate = function (item) {
             switch (item) {
                 case '=':
-                    $scope.result = eval($scope.result);
+                    $scope.result = eval($scope.result); // jshint ignore:line
                     break;
                 default:
                     $scope.result += item;
                     break;
             }
         };
-    }).controller('formCtrl', function ($scope, $http, $modal, $log) {
+    }).controller('formCtrl', function ($scope, $http, $modal/*, $log*/) {
 
         // http://stackoverflow.com/questions/15688313/how-can-i-populate-a-select-dropdown-list-from-a-json-feed-with-angularjs
-        var timeout = 0;
+        var timeout = 10,
+            httpTimeout = 10000;
 
         $scope.sellItems = [];
         $scope.deliveryMethods = [];
@@ -100,7 +101,8 @@ angular.module('myApp.controllers', ['ui.bootstrap'])
         }
 
         function getDetails(elem) {
-            $http.get('/app/data/selects.json')
+            console.log('>> elem:', elem);
+            $http.get('/app/data/' + elem.type + '.json', {timeout: httpTimeout})
                 .success(function (response) {
                     var item = elem.name.replace(/\s+/g, '_');
 
@@ -109,7 +111,9 @@ angular.module('myApp.controllers', ['ui.bootstrap'])
 
                     // Update billingDetails
                     if ($scope.billingMethod === 'Cash') {
-                        $scope.billingDetails = response.Cash['Cash' + $scope.deliveryMethod.replace(/\s+/g, '_')];
+                        $scope.billingDetails = response.Cash[
+                            'Cash' + $scope.deliveryMethod.replace(/\s+/g, '_')
+                            ];
                     }
 
                     updatePrices();
@@ -140,7 +144,7 @@ angular.module('myApp.controllers', ['ui.bootstrap'])
 
             $modal.open({
                 templateUrl: 'myModalContent.html',
-                controller: function ($scope, $modalInstance, $route/*, items*/) {
+                controller: function ($scope, $modalInstance, $route) {
 
                     $scope.deliveryMethod = $scope.$parent.$$childHead.deliveryMethod;
                     $scope.deliveryChoosen = $scope.$parent.$$childHead.deliveryDetails.choosenIco;
@@ -162,7 +166,7 @@ angular.module('myApp.controllers', ['ui.bootstrap'])
         };
 
         setTimeout(function () {
-            $http.get('/app/data/form.json').success(function (response) {
+            $http.get('/app/data/form.json', {timeout: httpTimeout}).success(function (response) {
                 $scope.sellItems = response.sellItems;
                 $scope.deliveryMethods = response.deliveryMethods;
                 $scope.billingMethods = response.billingMethods;
