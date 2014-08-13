@@ -6,9 +6,11 @@ module.exports = {
     filterView: require('./Views/filterView'),
     asyncBarsView: require('./Views/asyncBarsView'),
     calcView: require('./Views/calcView'),
+    formView: require('./Views/formView'),
 
     // Wire up Controls here
     filterCtrl: require('./Controls/filterCtrl'),
-    calcCtrl: require('./Controls/calcCtrl')
+    calcCtrl: require('./Controls/calcCtrl'),
+    formCtrl: require('./Controls/formCtrl')
 
 };
