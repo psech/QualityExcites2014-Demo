@@ -1,6 +1,6 @@
 {
     "Personal_collection": {
-        "message": ["No influence on delivery price", "Address:", "Struzika 6B m.20", "41-806 Zabrze"],
+        "message": ["No influence on delivery price", "Address:", "Street 123", "12-345 City"],
         "chooseIco": [],
         "deliveryPrice": 0
     },
