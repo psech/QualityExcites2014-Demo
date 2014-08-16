@@ -76,40 +76,30 @@ Now browse to the app at `http://localhost:8000/app/index.html`.
     │   │       demo.css                  --> demo stylesheet
     │   │
     │   ├───img                         --> image files
-    │   │       QualityExcites.png        --> QualityExcites logo
-    │   │       RockwellAutomation.png    --> Rockwell Automation logo
     │   │
     │   ├───js                          --> javascript files
     │   │       app.js                    --> application
     │   │       controllers.js            --> application controllers
     │   │
     │   └───partials                    --> angular view partials (partial html templates)
-    │           asyncBars.html             --> page with bars
-    │           calc.html                  --> page with calculator
-    │           filter.html                --> page with filter names
-    │           home.html                  --> home page
+    │   │       *.html                    --> partial files
     │
     └───test                             --> test config and source files
-        │   protractor-conf.js             --> config file for running e2e tests with Protractor
+        │   protractor-conf.js             --> config file for running e2e tests with Protractor from npm
+        │   seleniumGrid-conf.js           --> config file for running e2e tests with Protractor manually
         │
         ├───e2e                          --> end-to-end specs
-        │   │   1_generalSpec.js          --> basic tests
-        │   │   2_filterSpec.js            --> tests of filter functionality
-        │   │   3_asyncBarsSpec.js         --> tests of bars functionality
-        │   │   4_calcSpec.js              --> tests of calculator
+        │   │   *Spec.js                   --> tests
         │   │
         │   └───UIModel                  --> Page Object Model files
         │       │   common.js              --> common methods
         │       │   uiModel.js             --> main file, starting point
         │       │
         │       ├───Controls             --> uiModel controls
-        │       │       calcCtrl.js        --> calculator control
-        │       │       filterCtrl.js      --> filter control
+        │       │       *Ctrl.js           --> files describing controls
         │       │
         │       └───Views                --> uiModel views
-        │               asyncBarsView.js    --> bars view
-        │               calcView.js         --> calculator view
-        │               filterView.js       --> filter view
+        │               *View.js            --> files describing views
         │
         └───report                        --> test reports
 
@@ -124,7 +114,7 @@ The QualityExcites2014-Demo app comes with end-to-end tests written in [Jasmine]
 are run with the [Protractor][protractor] End-to-End test runner.  It uses native events and has
 special features for Angular applications.
 
-* the configuration is found at `test/protractor-conf.js`
+* the configuration is found at `test/protractor-conf.js` and `seleniumGrid-conf.js`
 * the end-to-end tests are found in `test/e2e/`
 * the Page Object Model files are in `test/e2e/UIModel/`
 
@@ -135,6 +125,8 @@ can interact with it.
 ```
 npm start
 ```
+
+####Run test by builtin automatic script####
 
 In addition, since Protractor is built upon WebDriver we need to install this.  The angular-seed
 project comes with a predefined script to do this:
@@ -155,6 +147,68 @@ npm run protractor
 This script will execute the end-to-end tests against the application being hosted on the
 development server.
 
+####Run tests manually with protractor installed globally####
+
+To run protractor tests in manual way tou ned to have protractor installed globally in your system:
+
+```
+npm install -g protractor
+```
+
+To update and start WebDriver:
+
+```
+webdriver-manager update
+webdriver-manager start
+```
+
+To sent tests to WebDriver place following line into protractor config:
+
+```
+seleniumAddress: 'http://localhost:4444/wd/hub'
+```
+
+To start test type:
+
+```
+protractor <options> <path_to_config_file>
+```
+
+####Run tests manually with protractor installed locally####
+
+Make sure you have protractor installed within the project (/node_modules/protractor)
+
+To update and start WebDriver:
+
+```
+<path_to_project>/mode_modules/protractor/bin/webdriver-manager update
+<path_to_project>/mode_modules/protractor/bin/webdriver-manager start
+```
+
+or for Windows
+
+```
+node <path_to_project>\mode_modules\protractor\bin\webdriver-manager update
+node <path_to_project>\mode_modules\protractor\bin\webdriver-manager start
+```
+
+To sent tests to WebDriver place following line into protractor config:
+
+```
+seleniumAddress: 'http://localhost:4444/wd/hub'
+```
+
+To start test type:
+
+```
+<path_to_project>/mode_modules/protractor/bin/protractor <options> <path_to_config_file>
+```
+
+or for Windows
+
+```
+node <path_to_project>\mode_modules\protractor\bin\protractor <options> <path_to_config_file>
+```
 
 ### Running the App during Development
 
