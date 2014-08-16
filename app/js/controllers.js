@@ -75,6 +75,7 @@ angular.module('myApp.controllers', ['ui.bootstrap'])
         $scope.deliveryTemplate = 'partials/formDelivery.html';
         $scope.billingTemplate = 'partials/formBilling.html';
 
+        $scope.billingAll = {};
         $scope.deliveryDetails = {};
         $scope.billingDetails = {};
 
@@ -101,17 +102,20 @@ angular.module('myApp.controllers', ['ui.bootstrap'])
         }
 
         function getDetails(elem) {
-            console.log('>> elem:', elem);
             $http.get('/app/data/' + elem.type + '.json', {timeout: httpTimeout})
                 .success(function (response) {
                     var item = elem.name.replace(/\s+/g, '_');
+
+                    if (elem.type === 'billing') {
+                        $scope.billingAll = response;
+                    }
 
                     // Update deliveryDetails
                     $scope[elem.type + 'Details'] = response[item];
 
                     // Update billingDetails
                     if ($scope.billingMethod === 'Cash') {
-                        $scope.billingDetails = response.Cash[
+                        $scope.billingDetails = $scope.billingAll.Cash[
                             'Cash' + $scope.deliveryMethod.replace(/\s+/g, '_')
                             ];
                     }
