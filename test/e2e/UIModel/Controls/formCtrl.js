@@ -50,6 +50,10 @@ module.exports = {
         return element(by.cssContainingText(parentLocator + ' ' + locator, text)).click();
     },
 
+    /**
+     * Gets content of final overlay
+     * @returns WebElement
+     */
     getOverlayTable: function () {
         "use strict";
         return element(by.css('div[class="modal-content"]'))

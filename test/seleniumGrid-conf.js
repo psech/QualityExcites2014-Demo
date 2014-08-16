@@ -25,6 +25,7 @@ exports.config = {
 //        'e2e/form_6_wait_spec.js',
 //        'e2e/form_7_waitCustom_spec.js',
 //        'e2e/form_8_model.js'
+//        'e2e/form_9_cheat.js'
     ],
 
     baseUrl: 'http://localhost:8000/app/',
