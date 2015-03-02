@@ -5,9 +5,9 @@ exports.config = {
 //        'e2e/*.js'
 //        'e2e/1_generalSpec.js'
 //        'e2e/2_filterSpec.js'
-//        'e2e/3_asyncBarsSpec.js'
+        'e2e/3_asyncBarsSpec.js'
 //        'e2e/4_calcSpec.js'
-        'e2e/form_1_noFlow_spec.js'
+//        'e2e/form_1_noFlow_spec.js'
 //        'e2e/form_5_sleep_spec.js'
     ],
 

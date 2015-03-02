@@ -6,7 +6,7 @@
     "repository": "https://github.com/angular/angular-seed",
     "license": "MIT",
     "devDependencies": {
-        "protractor": "~0.20.1",
+        "protractor": "*",
         "http-server": "^0.6.1",
         "bower": "^1.3.1",
         "shelljs": "^0.2.6",
